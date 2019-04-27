@@ -2,9 +2,9 @@ package gui;
 
 import com.Sounds;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
-
 public class GManager extends JPanel {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private final int H_FRAME = (int) screenSize.getHeight();
@@ -38,7 +38,7 @@ public class GManager extends JPanel {
         cardLayout.show(this, MENU_TAG);
         menuPanel.requestFocus();
         Sounds.getIstance().stop();
-        Sounds.getIstance().getAudio(Sounds.MENU).loop();
+        Sounds.getIstance().getAudio(Sounds.MENU).loop(Clip.LOOP_CONTINUOUSLY);
 
     }
 
