@@ -10,8 +10,10 @@ import java.util.HashMap;
 public class Sounds {
     private static Sounds instance;
 
-    public static final String MENU = "src/snd/menu.wav";
-
+    public static final String MENU = "src/snd/Prepare.wav";
+    public static final String BUTTON_MOVEOVER = "src/snd/button_press.wav";
+    public static final String BUTTON_CLICKED = "src/snd/confirm.wav";
+    public static final String TAG_SOUND = "src/snd/Village.wav";
     private HashMap<String, Clip> audioMap;
 
 
@@ -31,11 +33,16 @@ public class Sounds {
 
     public void loadAllAudio() {
         putAudio(MENU);
-
+        putAudio(BUTTON_MOVEOVER);
+        putAudio(BUTTON_CLICKED);
+        putAudio(TAG_SOUND);
     }
 
     public void stop() {
         getAudio(MENU).stop();
+        getAudio(BUTTON_MOVEOVER).stop();
+        getAudio(BUTTON_CLICKED).stop();
+        getAudio(TAG_SOUND).stop();
 
     }
 

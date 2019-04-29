@@ -2,8 +2,12 @@
   <dictionary name="nguye">
     <words>
       <w>gamelogo</w>
+      <w>highscore</w>
+      <w>moveover</w>
       <w>newbomb</w>
       <w>playgame</w>
+      <w>titlebar</w>
+      <w>tittlebar</w>
     </words>
   </dictionary>
 </component>

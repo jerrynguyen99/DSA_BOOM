@@ -5,6 +5,7 @@ import com.Sounds;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
+
 public class GManager extends JPanel {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private final int H_FRAME = (int) screenSize.getHeight();
@@ -14,7 +15,11 @@ public class GManager extends JPanel {
     private CardLayout cardLayout;
     private static String MENU_TAG = "menu";
     private static String PLAYGAME_TAG = "playgame";
+    private static String HELP_TAG = "help";
+    private static String HIGHSCORE_TAG = "highscore";
     private BoomPanel boomPanel;
+    private HelpPanel helpPanel;
+    private HighScorePanel highScorePanel;
 
     public int getH_FRAME() {
         return H_FRAME;
@@ -31,10 +36,21 @@ public class GManager extends JPanel {
         add(menuPanel, MENU_TAG);
         boomPanel = new BoomPanel(this);
         add(boomPanel, PLAYGAME_TAG);
+        helpPanel = new HelpPanel(this);
+        add(helpPanel, HELP_TAG);
+        highScorePanel = new HighScorePanel(this);
+        add(highScorePanel, HIGHSCORE_TAG);
         showMenu();
     }
 
-    private void showMenu() {
+    public void showHelp() {
+        cardLayout.show(this, HELP_TAG);
+        helpPanel.requestFocus();
+        Sounds.getIstance().stop();
+        Sounds.getIstance().getAudio(Sounds.TAG_SOUND).loop(Clip.LOOP_CONTINUOUSLY);
+    }
+
+    public void showMenu() {
         cardLayout.show(this, MENU_TAG);
         menuPanel.requestFocus();
         Sounds.getIstance().stop();
@@ -45,5 +61,12 @@ public class GManager extends JPanel {
     public void exit() {
         boomPanel.setIS_RUNNING(false);
         System.exit(0);
+    }
+
+    public void showHighScore() {
+        cardLayout.show(this, HIGHSCORE_TAG);
+        highScorePanel.requestFocus();
+        Sounds.getIstance().stop();
+        Sounds.getIstance().getAudio(Sounds.TAG_SOUND).loop(Clip.LOOP_CONTINUOUSLY);
     }
 }

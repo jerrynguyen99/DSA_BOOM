@@ -1,0 +1,7 @@
+Jerry		700
+ThTuyen		600
+Meow		550
+Gauw		400
+IronMan		350
+Batman		100
+Superman	50

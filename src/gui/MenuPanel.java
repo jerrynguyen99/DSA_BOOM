@@ -1,8 +1,7 @@
 package gui;
 
 import com.Position;
-import com.sun.nio.file.ExtendedOpenOption;
-
+import com.Sounds;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -63,16 +62,23 @@ public class MenuPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
 
+        if (e.getSource().equals(Help)){
+            gManager.showHelp();
+        }
+        if (e.getSource().equals(Highscore)){
+            gManager.showHighScore();
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        Sounds.getIstance().getAudio(Sounds.BUTTON_CLICKED).setFramePosition(0);
+        Sounds.getIstance().getAudio(Sounds.BUTTON_CLICKED).start();
         if(e.getSource().equals(Exit)){
             gManager.exit();
         }
@@ -80,6 +86,8 @@ public class MenuPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        Sounds.getIstance().getAudio(Sounds.BUTTON_MOVEOVER).setFramePosition(0);
+        Sounds.getIstance().getAudio(Sounds.BUTTON_MOVEOVER).start();
         if(e.getSource().equals(Play)){
             Play.setIcon(new ImageIcon(getClass().getResource("/img/content/button_play (1).png")));
         }
@@ -99,6 +107,8 @@ public class MenuPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+        Sounds.getIstance().getAudio(Sounds.BUTTON_MOVEOVER).stop();
+
         if(e.getSource().equals(Play)){
             Play.setIcon(new ImageIcon(getClass().getResource("/img/content/button_play.png")));
         }
