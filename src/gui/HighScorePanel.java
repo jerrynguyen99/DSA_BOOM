@@ -26,7 +26,7 @@ public class HighScorePanel extends JPanel implements MouseListener {
             fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
-            while ((line = bufferedReader.readLine() )!= null) {
+            while (((line = bufferedReader.readLine() )!= null) && number < 10) {
                 lines[number++] = line;
             }
 
@@ -39,27 +39,31 @@ public class HighScorePanel extends JPanel implements MouseListener {
     }
 
     private void addComponent() {
-        Position tablePos = new Position(gManager.getW_FRAME()/2,70);
+        Position tablePos = new Position(gManager.getW_FRAME()/2,30);
+        tablePos.setX(tablePos.getX()-300);
         HighScore = displayHighScore(tablePos.getX(),tablePos.getY());
         add(HighScore);
-        tablePos.setY(tablePos.getY()+600);
+        tablePos.setX(tablePos.getX()+300);
+        tablePos.setY(tablePos.getY()+HighScore.getHeight()+50);
         Back = setLabel(tablePos.getX(),tablePos.getY(),"/asset/menu/button_empty.png");
         add(Back);
         Back.addMouseListener(this);
+        tablePos.setY(tablePos.getY()+Back.getHeight()+50);
 
     }
 
     private JLabel displayHighScore(int x, int y){
-        JLabel jLabel = new JLabel("meow");
+        JLabel jLabel = new JLabel("<html><table width=\"900\">");
         for (String highScore: lines) {
-            if (highScore == null) {jLabel.setText(jLabel.getText()+"\n"+"empty");}
+            if (highScore == null) {jLabel.setText(jLabel.getText()+"<tr><td>empty</td></tr>");}
             else{
-                jLabel.setText(jLabel.getText()+"\n"+highScore);
+                jLabel.setText(jLabel.getText()+highScore);
             }
         }
-        System.out.println("Return:" + jLabel.getText());
+//        System.out.println("Return:" + jLabel.getText());
         jLabel.setFont(new Font("Verdana",1,40));
-        jLabel.setLocation(0,0);
+        jLabel.setBounds(x,y,900,600);
+        jLabel.setText(jLabel.getText()+"</table></html>");
         return jLabel;
     }
 

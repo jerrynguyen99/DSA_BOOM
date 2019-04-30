@@ -1,7 +1,7 @@
-Jerry		700
-ThTuyen		600
-Meow		550
-Gauw		400
-IronMan		350
-Batman		100
-Superman	50
+<tr><td> Jerry </td><td> 700 </td></tr>
+<tr><td> Tuyen </td><td> 600 </td></tr>
+<tr><td> Meoow </td><td> 550 </td></tr>
+<tr><td> Gauww </td><td> 400 </td></tr>
+<tr><td> IronM </td><td> 350 </td></tr>
+<tr><td> Groot </td><td> 100 </td></tr> 
+<tr><td> Super </td><td> 050 </td></tr>

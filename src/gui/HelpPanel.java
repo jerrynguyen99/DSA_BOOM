@@ -31,7 +31,7 @@ public class HelpPanel extends JPanel implements MouseListener {
         Position buttonPos = new Position(gManager.getW_FRAME()/2,70);
         Tutorial = setLabel(buttonPos.getX(),buttonPos.getY(),"/asset/menu/control_tutorial.png");
         add(Tutorial);
-        buttonPos.setY(buttonPos.getY()+600);
+        buttonPos.setY(buttonPos.getY()+Tutorial.getHeight()+50);
         Back = setLabel(buttonPos.getX(),buttonPos.getY(),"/asset/menu/button_empty.png");
         add(Back);
         Back.addMouseListener(this);
