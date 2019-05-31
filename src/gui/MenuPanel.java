@@ -73,6 +73,9 @@ public class MenuPanel extends JPanel implements MouseListener {
         if (e.getSource().equals(Highscore)){
             gManager.showHighScore();
         }
+        if (e.getSource().equals(Play)){
+//            gManager.showBoom();
+        }
     }
 
     @Override
