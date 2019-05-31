@@ -70,6 +70,10 @@ public class GManager extends JPanel {
         Sounds.getIstance().getAudio(Sounds.TAG_SOUND).loop(Clip.LOOP_CONTINUOUSLY);
     }
 
-    public void showBoom() {
+    public void showPlayGame() {
+        cardLayout.show(this, PLAYGAME_TAG);
+        boomPanel.requestFocus();
+        Sounds.getIstance().stop();
+        Sounds.getIstance().getAudio(Sounds.TAG_SOUND).loop(Clip.LOOP_CONTINUOUSLY);
     }
 }
