@@ -24,11 +24,11 @@ public class MenuPanel extends JPanel implements MouseListener {
     }
 
     private void addComponent(){
-        Position comPos = new Position(gManager.getW_FRAME()/2-200,70);
+        Position comPos = new Position(gManager.getW_FRAME()/2-200,gManager.getH_FRAME()/2-350);
         Logo = setLabel(comPos.getX(),comPos.getY(),"/img/wall/gamelogo.png");
         add(Logo);
         comPos.setX(comPos.getX()+100);
-        comPos.setY(comPos.getY()+430);
+        comPos.setY(gManager.getH_FRAME()/2);
 
         Play = setLabel(comPos.getX(),comPos.getY(),"/img/content/button_play.png");
         add(Play);
