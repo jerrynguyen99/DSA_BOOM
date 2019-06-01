@@ -2,7 +2,9 @@ package gui;
 
 import com.Map;
 import com.Position;
+import com.Sounds;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -18,6 +20,7 @@ public class BoomPanel extends JPanel implements MouseListener {
     private JLabel Mute;
     private Cursor cursor;
     private Map map;
+    private Boolean isMute = false;
 
 
     public BoomPanel(GManager gManager) {
@@ -38,6 +41,7 @@ public class BoomPanel extends JPanel implements MouseListener {
         position.setX(position.getX()+80);
         Mute = setLabel(position.getX(),position.getY(),"/asset/menu/sound_off.png");
         add(Mute);
+        Mute.addMouseListener(this);
         position.setX(position.getX()+80);
         Exit = setLabel(position.getX(),position.getY(),"/asset/menu/close_button.png");
         add(Exit);
@@ -52,7 +56,14 @@ public class BoomPanel extends JPanel implements MouseListener {
         add(map.showMap(position));
 
     }
-
+    private JLabel changeLabel(String url) {
+        JLabel jLabel = new JLabel();
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource(url));
+        jLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
+        jLabel.setLocation(gManager.getW_FRAME() / 2 - imageIcon.getIconWidth() / 2, 70);
+        jLabel.setIcon(imageIcon);
+        return jLabel;
+    }
 
     private JLabel setLabel(int x, int y, String url){
         JLabel jLabel = new JLabel();
@@ -84,6 +95,18 @@ public class BoomPanel extends JPanel implements MouseListener {
     public void mouseReleased(MouseEvent e) {
         if (e.getSource().equals(Exit)){
             gManager.showMenu();
+        }
+        if (e.getSource().equals(Mute)){
+            isMute = !isMute;
+            if (isMute) {
+                Sounds.getIstance().stop();
+                Mute.setIcon(new ImageIcon(getClass().getResource("/asset/menu/sound_on.png")));
+                updateUI();
+            } else {
+                Sounds.getIstance().getAudio(Sounds.TAG_SOUND).loop(Clip.LOOP_CONTINUOUSLY);
+                Mute.setIcon(new ImageIcon(getClass().getResource("/asset/menu/sound_off.png")));
+                updateUI();
+            }
         }
     }
 
