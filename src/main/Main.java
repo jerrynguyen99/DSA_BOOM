@@ -15,6 +15,7 @@ public class Main {
         try(InputStream input = new FileInputStream("config.properties")){
             Properties properties = new Properties();
             properties.load(input);
+
             Karacter character1 = new Karacter( properties.getProperty("NAME"),
                                                 Integer.parseInt(properties.getProperty("COUNT")),
                                                 Integer.parseInt(properties.getProperty("BLAST")),

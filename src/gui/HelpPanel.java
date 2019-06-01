@@ -28,10 +28,10 @@ public class HelpPanel extends JPanel implements MouseListener {
     }
 
     private void addComponent() {
-        Position buttonPos = new Position(gManager.getW_FRAME()/2,70);
+        Position buttonPos = new Position(gManager.getW_FRAME()/2,gManager.getH_FRAME()/10);
         Tutorial = setLabel(buttonPos.getX(),buttonPos.getY(),"/asset/menu/control_tutorial.png");
         add(Tutorial);
-        buttonPos.setY(buttonPos.getY()+Tutorial.getHeight()+50);
+        buttonPos.setY(gManager.getH_FRAME() - gManager.getH_FRAME()/10 - 100);
         Back = setLabel(buttonPos.getX(),buttonPos.getY(),"/asset/menu/button_empty.png");
         add(Back);
         Back.addMouseListener(this);
@@ -96,12 +96,12 @@ public class HelpPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
     @Override
     protected void paintComponent(Graphics g) {

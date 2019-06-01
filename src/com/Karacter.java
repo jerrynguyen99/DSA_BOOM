@@ -1,6 +1,8 @@
 package com;
 
-public class Karacter {
+import intefaces.Animatable;
+
+public class Karacter implements Animatable {
     String name;
     Integer boom;
     Integer blast;
@@ -23,5 +25,10 @@ public class Karacter {
     public String toString() {
 //        return "Character DONE!";
         return "[ " + this.name + ": " + this.boom + " | " + this.blast+ " | "+ this.speed + " | MAX: " + this.maxBoom + " | " + this.maxBlast + " | "+ this.maxSpeed + " ] ";
+    }
+
+    @Override
+    public void loadAnimation(String url) {
+
     }
 }

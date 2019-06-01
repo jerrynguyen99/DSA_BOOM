@@ -39,17 +39,15 @@ public class HighScorePanel extends JPanel implements MouseListener {
     }
 
     private void addComponent() {
-        Position tablePos = new Position(gManager.getW_FRAME()/2,30);
+        Position tablePos = new Position(gManager.getW_FRAME()/2,gManager.getH_FRAME()/10);
         tablePos.setX(tablePos.getX()-300);
         HighScore = displayHighScore(tablePos.getX(),tablePos.getY());
         add(HighScore);
         tablePos.setX(tablePos.getX()+300);
-        tablePos.setY(tablePos.getY()+HighScore.getHeight()+50);
+        tablePos.setY(tablePos.getY()+HighScore.getHeight());
         Back = setLabel(tablePos.getX(),tablePos.getY(),"/asset/menu/button_empty.png");
         add(Back);
         Back.addMouseListener(this);
-        tablePos.setY(tablePos.getY()+Back.getHeight()+50);
-
     }
 
     private JLabel displayHighScore(int x, int y){
@@ -96,18 +94,18 @@ public class HighScorePanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D graphics2D = (Graphics2D) g;
-        Image image = new ImageIcon(getClass().getResource("/asset/menu/bg2.png")).getImage();
+        Image image = new ImageIcon(getClass().getResource("/img/content/background_highscore.png")).getImage();
         graphics2D.drawImage(image,-24,0,gManager.getW_FRAME()+24,gManager.getH_FRAME(),null);
     }
 }

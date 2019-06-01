@@ -16,7 +16,7 @@ public class MenuPanel extends JPanel implements MouseListener {
     private JLabel Highscore;
     private JLabel Help;
     private JLabel Exit;
-
+    private Cursor cursor;
     public MenuPanel(GManager gManager){
         this.gManager= gManager;
         setLayout(null);
@@ -91,6 +91,8 @@ public class MenuPanel extends JPanel implements MouseListener {
     public void mouseEntered(MouseEvent e) {
         Sounds.getIstance().getAudio(Sounds.BUTTON_MOVEOVER).setFramePosition(0);
         Sounds.getIstance().getAudio(Sounds.BUTTON_MOVEOVER).start();
+        cursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+        setCursor(cursor);
         if(e.getSource().equals(Play)){
             Play.setIcon(new ImageIcon(getClass().getResource("/img/content/button_play (1).png")));
         }
@@ -111,7 +113,8 @@ public class MenuPanel extends JPanel implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         Sounds.getIstance().getAudio(Sounds.BUTTON_MOVEOVER).stop();
-
+        cursor = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
+        setCursor(cursor);
         if(e.getSource().equals(Play)){
             Play.setIcon(new ImageIcon(getClass().getResource("/img/content/button_play.png")));
         }

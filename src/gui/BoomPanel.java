@@ -1,17 +1,23 @@
 package gui;
 
+import com.Map;
 import com.Position;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class BoomPanel extends JPanel implements MouseListener {
     private GManager gManager;
     private boolean IS_RUNNING = true;
+    private JLabel Logo;
     private JLabel Exit;
+    private JLabel Timer;
     private JLabel Play;
     private JLabel Mute;
+    private Cursor cursor;
+    private Map map;
 
 
     public BoomPanel(GManager gManager) {
@@ -21,7 +27,12 @@ public class BoomPanel extends JPanel implements MouseListener {
     }
 
     public void drawComponent(){
-        Position position = new Position(gManager.getW_FRAME()-250,20);
+        Position position = new Position(0,0);
+        Logo = setLabel(position.getX(),position.getY(),"/asset/menu/title_scale.png");
+        add(Logo);
+
+        position.setX(gManager.getW_FRAME()-250);
+        position.setY(20);
         Play = setLabel(position.getX(),position.getY(),"/asset/menu/play_button.png");
         add(Play);
         position.setX(position.getX()+80);
@@ -32,6 +43,13 @@ public class BoomPanel extends JPanel implements MouseListener {
         add(Exit);
         position.setX(position.getX()+80);
         Exit.addMouseListener(this);
+        position.setX(gManager.getW_FRAME()/2-100);
+        Timer = setLabel(position.getX(),position.getY(),"/asset/menu/time_scale.png");
+        add(Timer);
+        map = new Map();
+        position.setX(gManager.getW_FRAME()/2-map.getWidth()/3);
+        position.setY(gManager.getH_FRAME()/2-map.getHeight()/3);
+        add(map.showMap(position));
 
     }
 
@@ -71,11 +89,21 @@ public class BoomPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        cursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+        setCursor(cursor);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        cursor = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
+        setCursor(cursor);
+    }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D graphics2D = (Graphics2D) g;
+        Image image = new ImageIcon(getClass().getResource("/img/content/background_Play.png")).getImage();
+        graphics2D.drawImage(image,-24,0,gManager.getW_FRAME()+24,gManager.getH_FRAME(),null);
     }
 }

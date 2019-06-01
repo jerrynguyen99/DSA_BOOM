@@ -76,4 +76,5 @@ public class GManager extends JPanel {
         Sounds.getIstance().stop();
         Sounds.getIstance().getAudio(Sounds.TAG_SOUND).loop(Clip.LOOP_CONTINUOUSLY);
     }
+
 }
