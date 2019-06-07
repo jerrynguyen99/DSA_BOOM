@@ -1,6 +1,9 @@
 <component name="ProjectDictionaryState">
   <dictionary name="nguye">
     <words>
+      <w>choosebomb</w>
+      <w>choosecharacter</w>
+      <w>choosemap</w>
       <w>gamelogo</w>
       <w>highscore</w>
       <w>karacter</w>
@@ -8,6 +11,8 @@
       <w>moveover</w>
       <w>newbomb</w>
       <w>playgame</w>
+      <w>postion</w>
+      <w>showable</w>
       <w>titlebar</w>
       <w>tittlebar</w>
     </words>

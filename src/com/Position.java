@@ -1,5 +1,7 @@
 package com;
 
+import java.awt.*;
+
 public class Position {
     private int x;
     private int y;
@@ -7,6 +9,11 @@ public class Position {
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Position(Point location) {
+        this.x = location.x;
+        this.y = location.y;
     }
 
 

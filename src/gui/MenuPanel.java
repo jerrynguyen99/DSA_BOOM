@@ -76,6 +76,9 @@ public class MenuPanel extends JPanel implements MouseListener {
         if (e.getSource().equals(Play)){
             gManager.showPlayGame();
         }
+        if (e.getSource().equals(Option)){
+            gManager.showOption();
+        }
     }
 
     @Override

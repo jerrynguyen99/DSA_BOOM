@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GManager extends JPanel {
+
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private final int H_FRAME = (int) screenSize.getHeight();
     private final int W_FRAME = (int) screenSize.getWidth();
@@ -17,9 +18,11 @@ public class GManager extends JPanel {
     private static String PLAYGAME_TAG = "playgame";
     private static String HELP_TAG = "help";
     private static String HIGHSCORE_TAG = "highscore";
+    private static String OPTION_TAG = "option";
     private BoomPanel boomPanel;
     private HelpPanel helpPanel;
     private HighScorePanel highScorePanel;
+    private OptionPanel optionPanel;
 
     public int getH_FRAME() {
         return H_FRAME;
@@ -40,6 +43,8 @@ public class GManager extends JPanel {
         add(helpPanel, HELP_TAG);
         highScorePanel = new HighScorePanel(this);
         add(highScorePanel, HIGHSCORE_TAG);
+        optionPanel = new OptionPanel(this);
+        add(optionPanel, OPTION_TAG);
         showMenu();
     }
 
@@ -72,6 +77,12 @@ public class GManager extends JPanel {
 
     public void showPlayGame() {
         cardLayout.show(this, PLAYGAME_TAG);
+        boomPanel.requestFocus();
+        Sounds.getIstance().stop();
+        Sounds.getIstance().getAudio(Sounds.TAG_SOUND).loop(Clip.LOOP_CONTINUOUSLY);
+    }
+    public void showOption() {
+        cardLayout.show(this, OPTION_TAG);
         boomPanel.requestFocus();
         Sounds.getIstance().stop();
         Sounds.getIstance().getAudio(Sounds.TAG_SOUND).loop(Clip.LOOP_CONTINUOUSLY);
