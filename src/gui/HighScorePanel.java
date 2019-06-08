@@ -42,7 +42,7 @@ public class HighScorePanel extends JPanel implements MouseListener {
         Position tablePos = new Position(gManager.getW_FRAME()/2,gManager.getH_FRAME()/10);
         tablePos.setX(tablePos.getX()-300);
         HighScore = displayHighScore(tablePos.getX(),tablePos.getY());
-        add(HighScore);
+        add(HighScore); // Who add?
         tablePos.setX(tablePos.getX()+300);
         tablePos.setY(tablePos.getY()+HighScore.getHeight());
         Back = setLabel(tablePos.getX(),tablePos.getY(),"/asset/menu/button_empty.png");
@@ -107,5 +107,6 @@ public class HighScorePanel extends JPanel implements MouseListener {
         Graphics2D graphics2D = (Graphics2D) g;
         Image image = new ImageIcon(getClass().getResource("/img/content/background_highscore.png")).getImage();
         graphics2D.drawImage(image,-24,0,gManager.getW_FRAME()+24,gManager.getH_FRAME(),null);
+
     }
 }

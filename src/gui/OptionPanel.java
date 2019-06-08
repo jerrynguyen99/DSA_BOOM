@@ -17,7 +17,7 @@ public class OptionPanel extends JPanel implements MouseListener {
 
     private GManager gManager;
     private JLabel Back;
-    private JLabel imageCharacter_1;
+    private JLabel imageCharacter_1; // Poor me, i'm sleeping doing this
     private JLabel imageCharacter_2;
     private JLabel imageCharacter_3;
     private JLabel imageCharacter_4;
@@ -35,9 +35,6 @@ public class OptionPanel extends JPanel implements MouseListener {
     private Integer chooseCharacterArrowPosition;
     private Integer chooseBombArrowPostion;
     private Integer chooseMapArrowPosition;
-
-
-
 
 
     OptionPanel(GManager gManager) {
@@ -122,7 +119,6 @@ public class OptionPanel extends JPanel implements MouseListener {
                 imageMap1.getLocation().y +imageMap1.getHeight()/2-50,"/asset/menu/choose.png",100);
         add(chooseMap);
         updateUI();
-
     }
 
     private void changeLabelPosition(JLabel jLabel, int x, int y){
@@ -220,6 +216,15 @@ public class OptionPanel extends JPanel implements MouseListener {
         }
     }
 
+    private String getMapName(){
+        switch (chooseMapArrowPosition){
+            case 1: return "TOWN";
+            case 2: return "UNDERWATER";
+            case 3: return "XMAS";
+            default: return "DESERT";
+        }
+    }
+
     private void storeInput() {
         try (InputStream input = new FileInputStream("config.properties")) {
             Properties properties = new Properties();
@@ -228,6 +233,7 @@ public class OptionPanel extends JPanel implements MouseListener {
             properties.setProperty("CHOOSECHARACTER", String.valueOf(chooseCharacterArrowPosition));
             properties.setProperty("CHOOSEBOMB", String.valueOf(chooseBombArrowPostion));
             properties.setProperty("CHOOSEMAP", String.valueOf(chooseMapArrowPosition));
+            properties.setProperty("MAP",getMapName());
             properties.store(new FileOutputStream("config.properties"),null);
             properties.store(System.out,"Option Updated!");
 
@@ -270,4 +276,5 @@ public class OptionPanel extends JPanel implements MouseListener {
         Image image = new ImageIcon(getClass().getResource("/asset/menu/bg2.png")).getImage();
         graphics2D.drawImage(image,-24,0,gManager.getW_FRAME()+24,gManager.getH_FRAME(),null);
     }
+
 }

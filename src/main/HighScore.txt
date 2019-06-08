@@ -5,3 +5,4 @@
 <tr><td> IronM </td><td> 350 </td></tr>
 <tr><td> Groot </td><td> 100 </td></tr> 
 <tr><td> Super </td><td> 050 </td></tr>
+<tr><td> Nah </td><td> 350 </td></tr>

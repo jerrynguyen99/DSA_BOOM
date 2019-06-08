@@ -15,7 +15,6 @@ public class Map {
     private String floor;
     private String gift_box;
     private String stone;
-    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     private MapName getMapName() {
         MapName gMapName;
@@ -101,7 +100,7 @@ public class Map {
         gridPosition.setY(position.getY()-getImageIconHeight(brick));
         for (int i = 1; i <= 7; i++) {
             for (int j = 1; j <= 9; j++) {
-                if (i == 1 || i == 7) {
+                if (i == 1 || i == 7) { // Why does jLabel "add" image??
                     jLabel.add(loadImage(gridPosition.getX(), gridPosition.getY(), brick));
                     gridPosition.setX(gridPosition.getX() + 64);
                     jLabel.add(loadImage(gridPosition.getX(), gridPosition.getY(), brick));
@@ -126,7 +125,7 @@ public class Map {
                 gridPosition.setY(gridPosition.getY()+128);
             gridPosition.setX(gridPosition.getX()-getImageIconWidth(floor)*9);
         }
-        jLabel.setBounds(0,0, 1366, 896);
+        jLabel.setBounds(0,0, 1366, 896); // How about screen resolution?
         System.out.print("DONE!");
         return jLabel;
     }

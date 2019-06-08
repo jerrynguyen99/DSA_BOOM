@@ -22,7 +22,7 @@ public class Karacter implements Showable, Walkable {
     private Integer maxBlast;
     private Integer maxSpeed;
     private String url;
-    private int scale = 0;
+    private int scale = 0; // is not used????
     private int positionX;
     private int positionY;
     private int par;
@@ -65,7 +65,7 @@ public class Karacter implements Showable, Walkable {
     }
 
     public void toShow(Position position){
-        url = "D:/DSA_BOOM/src/asset/character/" + name + ".png";
+        url = "D:/DSA_BOOM/src/asset/character/" + name + ".png"; //????? absolute path? sure?
         changeImg(position);
     }
 
@@ -82,7 +82,7 @@ public class Karacter implements Showable, Walkable {
         try {
             image =  ImageIO.read(new File(url));
             BufferedImage thisImage = image.getSubimage(getPositionX()*(image.getWidth()/5), getPositionY()*(image.getHeight()/4),
-                    image.getWidth()/5,image.getHeight()/4);
+                    image.getWidth()/5,image.getHeight()/4); // Are u sure with floating point?
             ImageIcon icon = new ImageIcon(thisImage);
             isShowing.setIcon(icon);
             isShowing.setBounds(position.getX(),position.getY(),icon.getIconWidth(),icon.getIconHeight());
@@ -98,7 +98,7 @@ public class Karacter implements Showable, Walkable {
     }
 
     @Override
-    public void move(KeyEvent event, int speed, boolean isStuck) {
+    public void move(KeyEvent event, int speed, boolean isStuck) { //should use keyboard hooking for smoothing gameplay
         int keyCode = event.getKeyCode();
         switch ( keyCode ) {
             case KeyEvent.VK_UP:

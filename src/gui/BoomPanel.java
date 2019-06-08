@@ -1,9 +1,6 @@
 package gui;
 
-import com.Karacter;
-import com.Map;
-import com.Position;
-import com.Sounds;
+import com.*;
 
 import javax.sound.sampled.Clip;
 import javax.swing.*;
@@ -28,7 +25,7 @@ public class BoomPanel extends JPanel implements MouseListener, KeyListener {
     private Position TopLeft;
     private Position TopRight;
     private Position BottomLeft;
-    private Position BottomRight;
+    private Position BottomRight; // is not used?
 
     BoomPanel(GManager gManager) {
         setLayout(null);
@@ -45,6 +42,7 @@ public class BoomPanel extends JPanel implements MouseListener, KeyListener {
         position.setY(20);
         Play = setLabel(position.getX(),position.getY(),"/asset/menu/play_button.png");
         add(Play);
+        Play.addMouseListener(this);
         position.setX(position.getX()+80);
         Mute = setLabel(position.getX(),position.getY(),"/asset/menu/sound_off.png");
         add(Mute);
@@ -71,6 +69,9 @@ public class BoomPanel extends JPanel implements MouseListener, KeyListener {
         character_1.toShow(TopLeft);
         add(character_1.loadLabel(),1);
         this.addKeyListener(this);
+        ArrayReader reader = new ArrayReader();
+        reader.read();
+        System.out.println(reader.toString());
     }
 
     private JLabel setLabel(int x, int y, String url){
@@ -100,7 +101,7 @@ public class BoomPanel extends JPanel implements MouseListener, KeyListener {
 
     }
 
-    public boolean isIS_RUNNING() {
+    public boolean isIS_RUNNING() { // is not used?
         return IS_RUNNING;
     }
     void setIS_RUNNING(boolean IS_RUNNING) {
@@ -133,6 +134,10 @@ public class BoomPanel extends JPanel implements MouseListener, KeyListener {
                 Mute.setIcon(new ImageIcon(getClass().getResource("/asset/menu/sound_off.png")));
                 updateUI();
             }
+        }
+        if (e.getSource().equals(Play)){
+            removeAll();
+            drawComponent();
         }
     }
 

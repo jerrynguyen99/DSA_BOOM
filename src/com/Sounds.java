@@ -16,8 +16,6 @@ public class Sounds {
     public static final String TAG_SOUND = "src/snd/Village.wav";
     private HashMap<String, Clip> audioMap;
 
-
-
     public Sounds() {
         audioMap = new HashMap<>();
         loadAllAudio();
